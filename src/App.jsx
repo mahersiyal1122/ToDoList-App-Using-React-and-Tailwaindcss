@@ -86,9 +86,11 @@ function App() {
           {todos.length===0 && <div className='m-3'>No Todos To Display</div> }
           {todos.map(item => {
             return (showFinished || !item.isCompleted) && <div key={item.id} className="todo flex w-full my-3 justify-between">
-              <div className='flex gap-5'>
+              <div className='flex max-w-[80%] gap-5'>
+              <div>
               <input name={item.id} onChange={handleCheckbox} type="checkbox" checked={item.isCompleted} id="" />
-              <div style={{textDecorationColor: '#4a71d8', textDecorationThickness: "3px"}} className={item.isCompleted ? "line-through" : ""}>{item.todo}</div>
+              </div>
+              <div style={{textDecorationColor: '#4a71d8', textDecorationThickness: "3px", height: "max-content", overflowWrap: "anywhere"}} className={item.isCompleted ? "line-through" : ""}>{item.todo}</div>
               </div>
               <div className="buttons flex h-full">
                 <button onClick={(e)=>{handleEdit(e, item.id)}} className='bg-[#351d52] p-2 py-1 mx-1 rounded-md text-sm font-bold text-white hover:bg-violet-950'><FaEdit /></button>
